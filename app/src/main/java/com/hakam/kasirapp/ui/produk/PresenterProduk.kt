@@ -22,8 +22,8 @@ class PresenterProduk(val view: ContractProduk.View) : ContractProduk.Presenter 
                 response: Response<ListProdukModel>
             ) {
                 if (response.isSuccessful) {
-                    val listProduk: ListProdukModel = response.body()!!
-                    Log.d("TAG", "onResponseProduk: ${listProduk.nama}")
+                    val listProduk: ListProdukModel? = response.body()!!
+                    view.onResultProduk(listProduk!!)
                 }
             }
 

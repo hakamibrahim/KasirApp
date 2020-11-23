@@ -2,6 +2,7 @@ package com.hakam.kasirapp.ui.penjualan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
 import com.hakam.kasirapp.model.ListPenjualanModel
@@ -10,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_produk.*
 
 class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
 
-    private lateinit var produkAdapter: ProdukAdapter
+    private lateinit var produkAdapter: PenjualanAdapter
     private lateinit var presenterPenjualan: PresenterPenjualan
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,7 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
 
     override fun onStart() {
         super.onStart()
+        presenterPenjualan.getPenjualan()
     }
 
     override fun initActivity() {
@@ -33,6 +35,8 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
     }
 
     override fun onResultPenjualan(listPenjualanModel: ListPenjualanModel) {
+        val dataPenjualan = listPenjualanModel
+        Log.d("TAG", "onResultPenjualan: ${dataPenjualan.created_at}")
     }
 
     override fun showMessage(message: String) {

@@ -22,8 +22,8 @@ class PresenterPenjualan (val view: ContractPenjualan.View) : ContractPenjualan.
                 response: Response<ListPenjualanModel>
             ) {
                 if (response.isSuccessful) {
-                    val listPenjualanModel: ListPenjualanModel = response.body()!!
-                    listPenjualanModel.harga
+                    val listPenjualanModel: ListPenjualanModel? = response.body()!!
+                    view.onResultPenjualan(listPenjualanModel!!)
                 }
             }
 
