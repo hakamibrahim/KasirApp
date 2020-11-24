@@ -12,7 +12,7 @@ interface ContractPenjualan {
         fun initActivity()
         fun initListener()
         fun onLoadingPenjualan(loading: Boolean)
-        fun onResultPenjualan(listPenjualanModel: ListPenjualanModel)
+        fun onResultPenjualan(listPenjualanModel: List<ListPenjualanModel>)
         fun showMessage(message: String)
     }
 }

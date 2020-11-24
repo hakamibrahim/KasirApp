@@ -16,19 +16,19 @@ class PresenterPenjualan (val view: ContractPenjualan.View) : ContractPenjualan.
 
     override fun getPenjualan() {
         view.onLoadingPenjualan(true)
-        ApiService.endpoint.getPenjualan().enqueue(object : Callback<ListPenjualanModel> {
+        ApiService.endpoint.getPenjualan().enqueue(object : Callback<List<ListPenjualanModel>> {
             override fun onResponse(
-                call: Call<ListPenjualanModel>,
-                response: Response<ListPenjualanModel>
+                call: Call<List<ListPenjualanModel>>,
+                response: Response<List<ListPenjualanModel>>
             ) {
-                if (response.isSuccessful) {
-                    val listPenjualanModel: ListPenjualanModel? = response.body()!!
-                    view.onResultPenjualan(listPenjualanModel!!)
+                if (response.isSuccessful){
+                    val dataPenjualan = response.body()!!
+                    view.onResultPenjualan(dataPenjualan)
                 }
             }
 
-            override fun onFailure(call: Call<ListPenjualanModel>, t: Throwable) {
-                view.onLoadingPenjualan(false)
+            override fun onFailure(call: Call<List<ListPenjualanModel>>, t: Throwable) {
+
             }
 
         })
