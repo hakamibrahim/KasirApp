@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hakam.kasirapp.R
-import com.hakam.kasirapp.model.ListPenjualanModel
 import com.hakam.kasirapp.model.ListProdukModel
 
 class ProdukAdapter(val context: Context, var dataProduk: ArrayList<ListProdukModel>) :

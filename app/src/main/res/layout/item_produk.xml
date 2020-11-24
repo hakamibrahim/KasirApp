@@ -3,17 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="16dp">
 
     <TextView
         android:id="@+id/itemNamaProduk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nama Produk"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="normal"
-        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,9 +19,7 @@
         android:id="@+id/itemHargaProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Harga"
-        android:textSize="14sp"
-        android:layout_margin="10dp"
+        android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemNamaProduk" />
@@ -33,7 +28,7 @@
         android:id="@+id/edtItemHargaProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="2000"
         app:layout_constraintTop_toBottomOf="@id/itemNamaProduk" />
 </androidx.constraintlayout.widget.ConstraintLayout>

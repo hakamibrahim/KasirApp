@@ -12,7 +12,7 @@ interface ContractProduk {
         fun initActivity()
         fun initListener()
         fun onLoadingProduk(loading: Boolean)
-        fun onResultProduk(listProdukModel: ListProdukModel)
+        fun onResultProduk(listProdukModel: List<ListProdukModel>)
         fun showMessage(message: String)
     }
 }

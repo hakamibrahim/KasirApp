@@ -11,7 +11,7 @@ import com.hakam.kasirapp.R
 import com.hakam.kasirapp.model.ListProdukModel
 import com.hakam.kasirapp.ui.penjualan.PenjualanActivity
 import kotlinx.android.synthetic.main.activity_produk.*
-import org.json.JSONArray
+import kotlinx.android.synthetic.main.item_produk.*
 
 
 class ProdukActivity : AppCompatActivity(), ContractProduk.View {
@@ -47,10 +47,8 @@ class ProdukActivity : AppCompatActivity(), ContractProduk.View {
 
     }
 
-    override fun onResultProduk(listProdukModel: ListProdukModel) {
-        val jsonArray = JSONArray("array")
-        val getJsonArray = jsonArray.getJSONArray(1)
-        Log.d("TAG", "onResultProduk: $getJsonArray")
+    override fun onResultProduk(listProdukModel: List<ListProdukModel>) {
+        produkAdapter.setData(listProdukModel)
     }
 
     override fun showMessage(message: String) {

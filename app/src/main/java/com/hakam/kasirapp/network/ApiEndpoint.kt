@@ -8,7 +8,7 @@ import retrofit2.http.GET
 interface ApiEndpoint {
 
     @GET("produk")
-    fun getProduk(): Call<ListProdukModel>
+    fun getProduk(): Call<List<ListProdukModel>>
 
     @GET("penjualan")
     fun getPenjualan(): Call<ListPenjualanModel>

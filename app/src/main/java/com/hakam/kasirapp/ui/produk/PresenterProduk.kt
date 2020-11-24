@@ -1,6 +1,5 @@
 package com.hakam.kasirapp.ui.produk
 
-import android.util.Log
 import com.hakam.kasirapp.model.ListProdukModel
 import com.hakam.kasirapp.network.ApiService
 import retrofit2.Call
@@ -16,19 +15,19 @@ class PresenterProduk(val view: ContractProduk.View) : ContractProduk.Presenter 
 
     override fun getProduk() {
         view.onLoadingProduk(true)
-        ApiService.endpoint.getProduk().enqueue(object : Callback<ListProdukModel> {
+        ApiService.endpoint.getProduk().enqueue(object : Callback<List<ListProdukModel>> {
             override fun onResponse(
-                call: Call<ListProdukModel>,
-                response: Response<ListProdukModel>
+                call: Call<List<ListProdukModel>>,
+                response: Response<List<ListProdukModel>>
             ) {
-                if (response.isSuccessful) {
-                    val listProduk: ListProdukModel? = response.body()!!
-                    view.onResultProduk(listProduk!!)
+                if (response.isSuccessful){
+                    val listProduk = response.body()!!
+                    view.onResultProduk(listProduk)
                 }
             }
 
-            override fun onFailure(call: Call<ListProdukModel>, t: Throwable) {
-                view.onLoadingProduk(false)
+            override fun onFailure(call: Call<List<ListProdukModel>>, t: Throwable) {
+
             }
 
         })
