@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
 import com.hakam.kasirapp.model.ListProdukModel
 import com.hakam.kasirapp.ui.penjualan.PenjualanActivity
+import kotlinx.android.synthetic.main.activity_penjualan.*
 import kotlinx.android.synthetic.main.activity_produk.*
 import kotlinx.android.synthetic.main.item_produk.*
 
@@ -44,7 +46,14 @@ class ProdukActivity : AppCompatActivity(), ContractProduk.View {
     }
 
     override fun onLoadingProduk(loading: Boolean) {
-
+        when (loading) {
+            true -> {
+                progressCircularProduk.visibility = View.VISIBLE
+            }
+            false -> {
+                progressCircularProduk.visibility = View.GONE
+            }
+        }
     }
 
     override fun onResultProduk(listProdukModel: List<ListProdukModel>) {

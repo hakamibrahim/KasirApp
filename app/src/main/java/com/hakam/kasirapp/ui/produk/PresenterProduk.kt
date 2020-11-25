@@ -20,6 +20,7 @@ class PresenterProduk(val view: ContractProduk.View) : ContractProduk.Presenter 
                 call: Call<List<ListProdukModel>>,
                 response: Response<List<ListProdukModel>>
             ) {
+                view.onLoadingProduk(false)
                 if (response.isSuccessful){
                     val listProduk = response.body()!!
                     view.onResultProduk(listProduk)
@@ -27,9 +28,8 @@ class PresenterProduk(val view: ContractProduk.View) : ContractProduk.Presenter 
             }
 
             override fun onFailure(call: Call<List<ListProdukModel>>, t: Throwable) {
-
+                view.onLoadingProduk(false)
             }
-
         })
     }
 }
