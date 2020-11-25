@@ -1,5 +1,6 @@
 package com.hakam.kasirapp.ui.penjualan
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
+import com.hakam.kasirapp.model.DetailPenjualanModel
 import com.hakam.kasirapp.model.ListPenjualanModel
 import kotlinx.android.synthetic.main.activity_penjualan.*
 
@@ -27,10 +29,17 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
     }
 
     override fun initActivity() {
+        supportActionBar!!.title = "RIWAYAT TRANSAKSI"
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun initListener() {
-        penjualanAdapter = PenjualanAdapter(this, arrayListOf())
+        penjualanAdapter =
+            PenjualanAdapter(arrayListOf(), object : PenjualanAdapter.OnAdapterListener {
+                override fun onClick(detailPenjualan: List<DetailPenjualanModel>) {
+
+                }
+            })
 
         recyclerPenjualan.apply {
             layoutManager = LinearLayoutManager(this@PenjualanActivity)
@@ -56,5 +65,10 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
 
     override fun showMessage(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 }

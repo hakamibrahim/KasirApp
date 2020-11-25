@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KasirApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.penjualan.PenjualanActivity"></activity>
+        <activity android:name=".ui.detailpenjualan.DetailPenjualanActivity"></activity>
+        <activity android:name=".ui.penjualan.PenjualanActivity" />
         <activity android:name=".ui.produk.ProdukActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,17 +1,25 @@
 package com.hakam.kasirapp.ui.penjualan
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.hakam.kasirapp.R
+import com.hakam.kasirapp.model.DetailPenjualanModel
 import com.hakam.kasirapp.model.ListPenjualanModel
 import com.hakam.kasirapp.model.ListProdukModel
 
-class PenjualanAdapter(val context: Context, var dataPenjualan: ArrayList<ListPenjualanModel>) :
+class PenjualanAdapter(
+    var dataPenjualan: ArrayList<ListPenjualanModel>,
+    var listener: OnAdapterListener
+) :
     RecyclerView.Adapter<PenjualanAdapter.ViewHolder>() {
+
+    private lateinit var detailPenjualanModel: List<DetailPenjualanModel>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_penjualan, parent, false)
@@ -22,6 +30,10 @@ class PenjualanAdapter(val context: Context, var dataPenjualan: ArrayList<ListPe
 
         holder.tanggal.text = model.created_at
         holder.harga.text = model.harga.toString()
+
+        holder.tanggal.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount() = dataPenjualan.size
@@ -35,5 +47,9 @@ class PenjualanAdapter(val context: Context, var dataPenjualan: ArrayList<ListPe
         dataPenjualan.clear()
         dataPenjualan.addAll(newData)
         notifyDataSetChanged()
+    }
+
+    interface OnAdapterListener {
+        fun onClick(detailPenjualan: List<DetailPenjualanModel>)
     }
 }

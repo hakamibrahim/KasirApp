@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="12dp">
+    android:layout_height="match_parent"
+    tools:context=".ui.detailpenjualan.DetailPenjualanActivity">
 
     <TextView
-        android:id="@+id/itemNamaProduk"
+        android:id="@+id/detailNamaProduk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
@@ -16,20 +17,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/itemHargaProduk"
+        android:id="@+id/detailHargaProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textStyle="normal"
         android:text="@string/harga"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNamaProduk" />
+        app:layout_constraintTop_toBottomOf="@+id/detailNamaProduk" />
 
     <EditText
-        android:id="@+id/edtItemHargaProduk"
+        android:id="@+id/edtdetailHargaProduk"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemNamaProduk" />
+        app:layout_constraintTop_toBottomOf="@id/detailNamaProduk" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
