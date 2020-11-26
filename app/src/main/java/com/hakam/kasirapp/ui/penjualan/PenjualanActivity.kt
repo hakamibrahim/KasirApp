@@ -3,13 +3,12 @@ package com.hakam.kasirapp.ui.penjualan
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
-import com.hakam.kasirapp.model.DetailPenjualanModel
 import com.hakam.kasirapp.model.ListPenjualanModel
+import com.hakam.kasirapp.ui.detailpenjualan.DetailPenjualanActivity
 import kotlinx.android.synthetic.main.activity_penjualan.*
 
 class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
@@ -36,8 +35,8 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
     override fun initListener() {
         penjualanAdapter =
             PenjualanAdapter(arrayListOf(), object : PenjualanAdapter.OnAdapterListener {
-                override fun onClick(detailPenjualan: List<DetailPenjualanModel>) {
-
+                override fun onClick(detailPenjualan: ListPenjualanModel) {
+                    startActivity(Intent(applicationContext, DetailPenjualanActivity::class.java))
                 }
             })
 
@@ -60,7 +59,6 @@ class PenjualanActivity : AppCompatActivity(), ContractPenjualan.View {
 
     override fun onResultPenjualan(listPenjualanModel: List<ListPenjualanModel>) {
         penjualanAdapter.setData(listPenjualanModel)
-        Log.d("TAG", "onResultPenjualan: $listPenjualanModel")
     }
 
     override fun showMessage(message: String) {

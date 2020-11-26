@@ -1,12 +1,13 @@
 package com.hakam.kasirapp.ui.detailpenjualan
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
 import com.hakam.kasirapp.model.DetailPenjualanModel
+import kotlinx.android.synthetic.main.activity_detail_penjualan.*
 
 class DetailPenjualanActivity : AppCompatActivity(), ContractDetailPenjualan.View {
 
@@ -30,15 +31,33 @@ class DetailPenjualanActivity : AppCompatActivity(), ContractDetailPenjualan.Vie
     }
 
     override fun initListener() {
+        detailPenjualanAdapter = PenjualanDetailAdapter(
+            arrayListOf(),
+            object : PenjualanDetailAdapter.OnAdapterListener {
+                override fun onClick(detailPenjualan: List<DetailPenjualanModel>) {
 
+                }
+            })
+
+        recyclerDetailPenjualan.apply {
+            layoutManager = LinearLayoutManager(this@DetailPenjualanActivity)
+            adapter = detailPenjualanAdapter
+        }
     }
 
     override fun onLoadingDetailPenjualan(loading: Boolean) {
-
+        when (loading) {
+            true -> {
+                progressCircularDetail.visibility = View.VISIBLE
+            }
+            false -> {
+                progressCircularDetail.visibility = View.GONE
+            }
+        }
     }
 
     override fun onResultDetailPenjualan(detailPenjualanModel: List<DetailPenjualanModel>) {
-        Log.d("TAG", "onResultDetailPenjualan: $detailPenjualanModel")
+        detailPenjualanAdapter.setData(detailPenjualanModel)
     }
 
     override fun showMessage(message: String) {
