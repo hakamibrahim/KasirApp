@@ -20,13 +20,14 @@ class ProdukAdapter(val context: Context, var dataProduk: ArrayList<ListProdukMo
         val model = dataProduk[position]
 
         holder.namaProduk.text = model.nama
+        holder.harga.text = model.harga.toString()
     }
 
     override fun getItemCount() = dataProduk.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val namaProduk: TextView = itemView.findViewById(R.id.itemNamaProduk)
-        val harga: TextView = itemView.findViewById(R.id.edtItemHargaProduk)
+        val harga: TextView = itemView.findViewById(R.id.itemHargaProduk)
     }
 
     fun setData(newData: List<ListProdukModel>) {

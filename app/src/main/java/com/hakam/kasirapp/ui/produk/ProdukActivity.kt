@@ -2,7 +2,6 @@ package com.hakam.kasirapp.ui.produk
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hakam.kasirapp.R
 import com.hakam.kasirapp.model.ListProdukModel
+import com.hakam.kasirapp.ui.konfirmasi.KonfirmasiActivity
 import com.hakam.kasirapp.ui.penjualan.PenjualanActivity
 import kotlinx.android.synthetic.main.activity_penjualan.*
 import kotlinx.android.synthetic.main.activity_produk.*
@@ -42,6 +42,10 @@ class ProdukActivity : AppCompatActivity(), ContractProduk.View {
         recyclerProduk.apply {
             layoutManager = LinearLayoutManager(this@ProdukActivity)
             adapter = produkAdapter
+        }
+
+        cardTotal.setOnClickListener {
+            startActivity(Intent(this, KonfirmasiActivity::class.java))
         }
     }
 

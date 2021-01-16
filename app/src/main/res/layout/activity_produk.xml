@@ -18,19 +18,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProduk"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardTotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:cardBackgroundColor="@color/cardview_shadow_end_color"
-        app:cardElevation="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerProduk">
+        app:cardElevation="8dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -41,14 +43,15 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:gravity="center"
-                tools:text="Total" />
+                android:text="@string/total" />
 
             <TextView
+                android:id="@+id/produkTotal"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:gravity="center"
                 android:text="Rp." />
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>-->
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
